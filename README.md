@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------------
 
 
-# 模块划分
+# 模块介绍
 
 - clivia-admin-core : 网关配置管理后台核心模块
 
@@ -30,17 +30,17 @@
 
 - clivia-loadbalance : 内置可扩展的负载均衡策略模块
 
-- clivia-middleware : 系统中间件模块
+- clivia-assembly-base : 系统中间件模块(redis、metrics)
 
 - clivia-spi : 系统spi模块
 
 - clivia-support : 系统公共支撑模块
 --------------------------------------------------------------------------------
 
-# 特色优势
+# 特点
 
 - 支持多种API配置方式，例如数据库、文件、可视化界面方式(规划中)配置API信息；支持系统/接口级别的服务接入
-- 系统具备安全验证、黑名单、验签、限流、url重写、熔断、mock、header、系统开关等常用过滤器；具备http、dubbo、spring cloud、webscoket/sofa/grpc/thrift(规划中)等类型rpc转发功能
+- 系统具备安全验证、黑名单、验签、限流、url重写、熔断、mock、header、系统开关等常用过滤器；具备http、dubbo、spring cloud、webscoket等类型rpc转发功能
 - 系统具备高弹性，在不停机的情况下支持基于groovy的代码文件加载
 - 模块划分清晰；扩展性强，具有完善的扩展机制
 - 支持高可用集群及灰度发布
@@ -61,7 +61,7 @@
   框架启动后会进行clivia-event模块调用，clivia-event会加载clivia-cache模块DefaultCliviaCacheManager类中的initCache方法，完成全量API配置/黑名单/filter/invoker的加载，并放入CliviaCacheFactory进行缓存。在首次加载完成后，系统会定时进行缓存增量更新
 - CliviaCacheFactory目前有三种缓存实现，分别为CliviaStandandCacheFactory(直接将数据更新到内存),CliviaLocalCacheFactory(分离式内存缓存更新)
   ,CliviaRemoteCacheFactory(分离式远程缓存，待完善)
-- API配置/黑名单配置的数据同步机制：clivia-cache模块通过http请求clivia-admin模块，clivia-admin 优先从本地缓存获取数据并响应该请求，通过该机制可满足缓存的最终一致性要求。
+- API配置/黑名单配置的数据同步机制：clivia-cache模块通过http请求clivia-admin模块，clivia-admin 优先从本地缓存获取数据并响应该请求。
 
 --------------------------------------------------------------------------------
 
@@ -101,10 +101,9 @@
 * run(先后启动clivia-example下的admin和client子工程)
 
    ~~~
-   #  java -jar clivia-admin-1.0-SNAPSHOT.jar
-   #  java -jar clivia-client-1.0-SNAPSHOT.jar
+   #  java -jar clivia-gateway-admin-0.0.1.jar
+   #  java -jar clivia-gateway-client-0.0.1.jar
    ~~~
-
 # 协议
 
 clivia遵从许可证 [ Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
