@@ -108,5 +108,4 @@ public class CliviaEventLoadlistener extends AbstractCliviaEvent implements Appl
         }
 
     }
-
 }

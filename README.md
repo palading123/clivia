@@ -1,3 +1,5 @@
+
+  ![image](img/logo/clivia.png)
 <p align="center">
   <strong>clivia是一款基于spring webflux的可扩展、高性能、高弹性、响应式的 API 网关</strong>
 </p>
@@ -5,8 +7,16 @@
   <strong>clivia_V0.0.1</strong>
 </p>
 
---------------------------------------------------------------------------------
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/palading123/clivia/blob/main/LICENSE)
+[![Travis](https://app.travis-ci.com/palading123/clivia.svg?branch=main)](https://app.travis-ci.com/github/palading123/clivia)
+<img src="https://img.shields.io/badge/JDK-8+-green" />
+<img src="https://img.shields.io/badge/Latest Release-0.0.1-orange" />
+<img src="https://img.shields.io/badge/Maven- 3.8.3-green" />
 
+
+--------------------------------------------------------------------------------
+#  架构概览
+![image](img/Architecture.png)
 
 # 模块介绍
 
@@ -104,6 +114,10 @@
    #  java -jar clivia-gateway-admin-0.0.1.jar
    #  java -jar clivia-gateway-client-0.0.1.jar
    ~~~
+# 交流
+欢迎您加入到clivia交流群。
+QQ群 1：**574835875**
+
 # 协议
 
 - clivia遵从许可证 [ Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
