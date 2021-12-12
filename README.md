@@ -103,14 +103,6 @@
 
 ~~~
 
-# 捐赠
-
-开源不易，无论捐赠金额多少都足够表达您的这份心意，非常感谢
-
-《支付宝》
-
-《微信》
-
 # 协议
 
 clivia遵从许可证 [ Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
