@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>clivia</artifactId>
+        <groupId>org.palading</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>clivia-filter</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>clivia-filter-config</module>
+        <module>clivia-invoke-filter</module>
+        <module>clivia-request-build-filter</module>
+        <module>clivia-request-cache-filter</module>
+        <module>clivia-request-header-filter</module>
+        <module>clivia-request-blacklist-filte</module>
+        <module>clivia-request-hystrix-filter</module>
+        <module>clivia-request-limit-filter</module>
+        <module>clivia-request-mock-filter</module>
+        <module>clivia-request-parameter-filter</module>
+        <module>clivia-request-rewrite-filter</module>
+        <module>clivia-request-sign-filter</module>
+        <module>clivia-request-sizeLimit-filter</module>
+        <module>clivia-request-switch-filter</module>
+        <module>clivia-request-websocket-filter</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.palading</groupId>
+            <artifactId>clivia-cache</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.palading</groupId>
+            <artifactId>clivia-support</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

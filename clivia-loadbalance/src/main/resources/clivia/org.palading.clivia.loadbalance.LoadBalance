@@ -1,0 +1,3 @@
+consistentHash=org.palading.clivia.loadbalance.CliviaConsistentHashLoadBalance
+roundRobin=org.palading.clivia.loadbalance.CliviaRandomLoadBalance
+random=org.palading.clivia.loadbalance.CliviaRoundRobinLoadBalance

@@ -1,0 +1,14 @@
+[
+  {
+    "blacklistId": "1",
+    "blacklistIp": "172.10.100.*",
+    "state": "0",
+    "groupId": "1"
+  },
+  {
+    "blacklistId": "2",
+    "blacklistIp": "179.10.100.255",
+    "state": "0",
+    "groupId": "1"
+  }
+]

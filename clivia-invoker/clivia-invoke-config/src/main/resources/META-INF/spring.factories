@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.palading.clivia.invoke.config.CliviaInvokeAutoConfiguration,\
+org.palading.clivia.invoke.config.CliviaWebClientAutoConfiguration
