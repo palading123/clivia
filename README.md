@@ -27,7 +27,7 @@
 
 - clivia-loadbalance : 内置可扩展的负载均衡策略模块
 
-- clivia-middleware : 系统中间件模块
+- clivia-assembly-base : 系统中间件模块(redis、metrics)
 
 - clivia-spi : 系统spi模块
 
