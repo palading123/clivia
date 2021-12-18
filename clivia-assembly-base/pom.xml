@@ -30,6 +30,7 @@
     <modules>
         <module>clivia-redis-assembly-base</module>
         <module>clivia-micrometer-assembly-base</module>
+        <module>clivia-httpClient-assembly-base</module>
     </modules>
 
     <properties>

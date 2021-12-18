@@ -15,6 +15,7 @@ package org.palading.clivia.filter.config;
 
 import org.palading.clivia.common.api.CliviaServerProperties;
 import org.palading.clivia.invoke.common.CliviaCommonInvoker;
+import org.palading.clivia.invoke.common.CliviaInvokerWraper;
 import org.palading.clivia.request.blacklist.CliviaRequestBlackListFilter;
 import org.palading.clivia.request.build.CliviaDefaultContextBuilder;
 import org.palading.clivia.request.build.CliviaRequestBuildFilter;
@@ -136,8 +137,8 @@ public class CliviaFilterAutoConfiguration {
      * @author palading_cr
      */
     @Bean
-    public CliviaRequestInvokeFilter cliviaRequestInvokeFilter(ObjectProvider<CliviaCommonInvoker> cliviaCommonInvoker) {
-        return new CliviaRequestInvokeFilter(cliviaCommonInvoker.getIfAvailable());
+    public CliviaRequestInvokeFilter cliviaRequestInvokeFilter(ObjectProvider<CliviaInvokerWraper> cliviaInvokerWraper) {
+        return new CliviaRequestInvokeFilter(cliviaInvokerWraper.getIfAvailable());
     }
 
     /**

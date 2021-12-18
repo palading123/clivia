@@ -53,6 +53,10 @@ public class CliviaConstants {
 
     public static final String clivia_system_invoker = "system";
 
+    public static final String clivia_invoker_waper = "clivia.server.config.invokerWraper";
+    public static final String clivia_invoker_waper_default_value = "0";
+    public static final String clivia_invoker_waper_metrics_value = "1";
+
     public static final String gateway_admin_fetch_token_url = "/admin/server/getToken";
 
     public static final String gateway_admin_switch_url = "/admin/server/getSwitch";
@@ -79,6 +83,8 @@ public class CliviaConstants {
     public static final String appKey_check_anonymous_not = "0";
 
     public static final String gateway_admin_config_type = "clivia.admin.config.type";
+
+
 
     public static final String gateway_admin_config_type_db = "0";
 

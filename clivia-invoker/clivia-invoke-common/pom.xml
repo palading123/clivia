@@ -32,6 +32,11 @@
             <artifactId>clivia-cache</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.palading</groupId>
+            <artifactId>clivia-micrometer-assembly-base</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

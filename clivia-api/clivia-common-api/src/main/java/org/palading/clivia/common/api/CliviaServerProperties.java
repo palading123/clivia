@@ -83,6 +83,9 @@ public class CliviaServerProperties {
     private int recordFileMaxHistory;
     private String recordFileTotalSizeCap;
 
+    /***************metrics*************/
+    private String invokerWraper;
+
     public CliviaServerProperties(String cliviaClientUrl, String serverName) {
         this.cliviaClientUrl = cliviaClientUrl;
         this.serverName = serverName;
@@ -272,6 +275,14 @@ public class CliviaServerProperties {
 
     public void setDynamicFilterPath(String dynamicFilterPath) {
         this.dynamicFilterPath = dynamicFilterPath;
+    }
+
+    public String getInvokerWraper() {
+        return invokerWraper;
+    }
+
+    public void setInvokerWraper(String invokerWraper) {
+        this.invokerWraper = invokerWraper;
     }
 
     public String getDynamicFileType() {

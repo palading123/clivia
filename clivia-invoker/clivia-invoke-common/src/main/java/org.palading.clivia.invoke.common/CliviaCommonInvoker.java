@@ -30,16 +30,16 @@ import reactor.core.publisher.Mono;
  * @title CliviaCommonInvoker
  * @project clivia
  */
-public class CliviaCommonInvoker implements CliviaInvoker {
+public class CliviaCommonInvoker implements CliviaInvokerWraper {
 
     private static final String default_error_msg = JsonUtil.toJson(CliviaResponse.error());
 
     @Override
-    public Mono<Void> invoke(ServerWebExchange exchange) {
+    public Mono<Void> invoke(ServerWebExchange serverWebExchange) {
         CliviaInvoker cliviaInvoker = null;
         try {
             CliviaRequestContext cliviaRequestContext =
-                (CliviaRequestContext)exchange.getAttributes().get(CliviaConstants.request_context);
+                (CliviaRequestContext)serverWebExchange.getAttributes().get(CliviaConstants.request_context);
             String rpcType = cliviaRequestContext.getAppInfo().getRpcType();
             if (CliviaConstants.clivia_system_invoker.equals(rpcType)) {
                 throw new Exception("CliviaCommonInvoker[invoke] rpcType is system,you can not call this one ,rpcType[" + rpcType
@@ -49,18 +49,18 @@ public class CliviaCommonInvoker implements CliviaInvoker {
             if (Objects.isNull(cliviaInvoker)) {
                 throw new Exception("CliviaCommonInvoker[invoke] rpcType is not exists,rpcType[" + rpcType + "]");
             }
-            Mono<Void> res = cliviaInvoker.invoke(exchange);
+            Mono<Void> res = cliviaInvoker.invoke(serverWebExchange);
             return res;
         } catch (Exception e) {
             logger
                 .error("CliviaCommonInvoker[invoke] current invoker[" + cliviaInvoker.getClass().getSimpleName() + "] error", e);
         }
-        return writeResponse(exchange, default_error_msg);
+        return writeResponse(serverWebExchange, default_error_msg);
     }
 
-    @Override
-    public String getRpcType() {
-        return CliviaConstants.clivia_system_invoker;
-    }
+//    @Override
+//    public String getRpcType() {
+//        return CliviaConstants.clivia_system_invoker;
+//    }
 
 }
