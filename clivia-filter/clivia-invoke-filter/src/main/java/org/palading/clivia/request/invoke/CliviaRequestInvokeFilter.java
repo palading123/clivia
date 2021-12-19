@@ -14,6 +14,7 @@ package org.palading.clivia.request.invoke;
 import org.palading.clivia.filter.api.CliviaFilter;
 import org.palading.clivia.filter.api.CliviaFilterChain;
 import org.palading.clivia.invoke.common.CliviaInvokerWraper;
+import org.palading.clivia.invoke.common.CliviaInvokerWraperFactory;
 import org.palading.clivia.support.common.constant.CliviaFilterOrder;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -25,10 +26,10 @@ import reactor.core.publisher.Mono;
  */
 public class CliviaRequestInvokeFilter implements CliviaFilter {
 
-    private CliviaInvokerWraper cliviaInvokerWraper;
+    private CliviaInvokerWraperFactory cliviaInvokerWraperFactory;
 
-    public CliviaRequestInvokeFilter(CliviaInvokerWraper cliviaInvokerWraper) {
-        this.cliviaInvokerWraper = cliviaInvokerWraper;
+    public CliviaRequestInvokeFilter(CliviaInvokerWraperFactory cliviaInvokerWraperFactory) {
+        this.cliviaInvokerWraperFactory = cliviaInvokerWraperFactory;
     }
 
     /**
@@ -39,7 +40,8 @@ public class CliviaRequestInvokeFilter implements CliviaFilter {
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain) {
-        return cliviaInvokerWraper.invoke(exchange);
+        CliviaInvokerWraper cliviaInvokerWraper = cliviaInvokerWraperFactory.create();
+        return cliviaInvokerWraperFactory.invoke(exchange,cliviaInvokerWraper);
     }
 
     @Override

@@ -30,14 +30,14 @@ public class CliviaInvokerWraperAutoConfiguration {
 
     @Conditional(CliviaCommonCondition.class)
     @Bean
-    public CliviaCommonInvoker cliviaCommonInvoker(){
-        return new CliviaCommonInvoker();
+    public CliviaDefaultInvokerWraperFactory cliviaDefaultInvokerWraperFactory(){
+        return new CliviaDefaultInvokerWraperFactory();
     }
 
     @Conditional(CliviaMetricsCondition.class)
     @Bean
-    public CliviaMetricsInvoker cliviaMetricsInvoker(ObjectProvider<CliviaCountMetricsBuilderFactory> cliviaCountMetricsBuilderFactory, ObjectProvider<CliviaTimerMetricsBuilderFactory> cliviaTimerMetricsBuilderFactory, ObjectProvider<MeterRegistry> meterRegistries){
-        return new CliviaMetricsInvoker(cliviaCountMetricsBuilderFactory.getIfAvailable(),cliviaTimerMetricsBuilderFactory.getIfAvailable(),meterRegistries.getIfAvailable());
+    public CliviaMetricsInvokerWraperFactory cliviaMetricsInvokerWraperFactory(ObjectProvider<CliviaCountMetricsBuilderFactory> cliviaCountMetricsBuilderFactory, ObjectProvider<CliviaTimerMetricsBuilderFactory> cliviaTimerMetricsBuilderFactory, ObjectProvider<MeterRegistry> meterRegistries){
+        return new CliviaMetricsInvokerWraperFactory(cliviaCountMetricsBuilderFactory.getIfAvailable(),cliviaTimerMetricsBuilderFactory.getIfAvailable(),meterRegistries.getIfAvailable());
     }
 
 
