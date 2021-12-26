@@ -31,5 +31,15 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
+    <dependencies>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.palading</groupId>
+        <artifactId>clivia-support</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    </dependencies>
 </project>
