@@ -1,14 +1,14 @@
 [
   {
     "id": "1",
-    "clientName": "clivia_mode1",
+    "clientName": "clivia_node1",
     "clientPwd": "asdasdasdasdasdasd",
-    "token": "asdasdase2qweqw",
+    "token": "asdasdase2qweqw1",
     "state": "0"
   },
   {
-    "id": "1",
-    "clientName": "clivia_mode1",
+    "id": "2",
+    "clientName": "clivia_node2",
     "clientPwd": "asdasdasdasdasdasd",
     "token": "asdasdase2qweqw",
     "state": "0"

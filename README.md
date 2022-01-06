@@ -1,7 +1,7 @@
 
   ![image](img/logo/clivia.png)
 <p align="center">
-  <strong>clivia是一款基于spring webflux的可扩展、高性能、高弹性、响应式的 API 网关</strong>
+  <strong>clivia是一款基于spring webflux的可扩展、高性能、高弹性、响应式的 api gateway</strong>
 </p>
 <p align="center">
   <strong>clivia_V0.0.1</strong>
