@@ -24,10 +24,11 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @project clivia
  */
 public class CliviaMetricsCondition implements Condition {
+
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String conditionType = conditionContext.getEnvironment().getProperty(CliviaConstants.clivia_invoker_waper);
-        return conditionType.equals(CliviaConstants.clivia_invoker_waper_metrics_value);
+        return StringUtils.isNotEmpty(conditionType) &&conditionType.equals(CliviaConstants.clivia_invoker_waper_metrics_value);
 
     }
 }

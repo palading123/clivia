@@ -29,6 +29,6 @@ public class CliviaCommonCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String conditionType = conditionContext.getEnvironment().getProperty(CliviaConstants.clivia_invoker_waper);
         conditionType = StringUtils.isEmpty(conditionType) ? CliviaConstants.clivia_invoker_waper_default_value : conditionType;
-        return StringUtils.isEmpty(conditionType)||conditionType.equals(CliviaConstants.clivia_invoker_waper_default_value);
+        return conditionType.equals(CliviaConstants.clivia_invoker_waper_default_value);
     }
 }

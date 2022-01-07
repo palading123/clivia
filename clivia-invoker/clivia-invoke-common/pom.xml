@@ -28,6 +28,10 @@
     <artifactId>clivia-invoke-common</artifactId>
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.palading</groupId>
             <artifactId>clivia-cache</artifactId>
             <version>${project.version}</version>

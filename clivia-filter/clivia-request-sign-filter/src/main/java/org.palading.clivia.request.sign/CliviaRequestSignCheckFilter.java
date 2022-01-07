@@ -14,6 +14,7 @@ package org.palading.clivia.request.sign;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
@@ -151,10 +152,9 @@ public class CliviaRequestSignCheckFilter implements CliviaFilter {
      */
     @Override
     public boolean shouldFilter(ServerWebExchange exchange) {
-        return true;
-        // CliviaRequestContext cliviaRequestContext =
-        // (CliviaRequestContext)exchange.getAttributes().get(CliviaConstants.request_context);
-        // return Optional.of(cliviaRequestContext).map(u -> u.getAppInfo())
-        // .map(f -> (null != f.getApiAuth() && f.getApiAuth().getEnabled())).orElse(false);
+         CliviaRequestContext cliviaRequestContext =
+         (CliviaRequestContext)exchange.getAttributes().get(CliviaConstants.request_context);
+         return Optional.of(cliviaRequestContext).map(u -> u.getAppInfo())
+         .map(f -> (null != f.getApiAuth() && f.getApiAuth().getEnabled())).orElse(false);
     }
 }
