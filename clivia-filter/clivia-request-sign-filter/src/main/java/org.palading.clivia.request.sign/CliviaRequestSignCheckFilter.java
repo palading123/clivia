@@ -62,7 +62,6 @@ public class CliviaRequestSignCheckFilter implements CliviaFilter {
     public Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain) {
         CliviaRequestContext cliviaRequestContext =
             (CliviaRequestContext)exchange.getAttributes().get(CliviaConstants.request_context);
-        if (null != cliviaRequestContext.getRequestParam()) {
             if (StringUtils.isEmpty(cliviaRequestContext.getSign())) {
                 if (logger.isDebugEnabled()) {
                     logger.debug("CliviaRequestSignCheckFilter[filter] request sign is empty");
@@ -77,8 +76,7 @@ public class CliviaRequestSignCheckFilter implements CliviaFilter {
             }
             return writeResponse(exchange, JsonUtil.toJson(CliviaResponse.error_sign_not_pass()));
         }
-        return cliviaFilterChain.filter(exchange, cliviaFilterChain);
-    }
+
 
     /**
      * build sign
