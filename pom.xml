@@ -74,8 +74,10 @@
         <version.commons-text>1.6</version.commons-text>
         <version.jackson-databind>2.9.4</version.jackson-databind>
         <version.commons-lang3>3.10</version.commons-lang3>
+        <version.commons-io>2.8.0</version.commons-io>
         <version.disruptor>3.3.4</version.disruptor>
-        <version.httpclient>4.3.1</version.httpclient>
+        <version.httpclient>4.3.6</version.httpclient>
+        <version.httpmime>4.3.6</version.httpmime>
         <version.mybatis-generator-core>1.4.0</version.mybatis-generator-core>
         <version.mybatis-generator-maven-plugin>1.4.0</version.mybatis-generator-maven-plugin>
         <version.mybatis-spring-boot-starter>2.1.0</version.mybatis-spring-boot-starter>
@@ -132,6 +134,11 @@
                 <version>${version.commons-lang3}</version>
             </dependency>
             <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${version.commons-io}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>${version.commons-text}</version>
@@ -139,6 +146,11 @@
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
+                <version>${version.httpclient}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
                 <version>${version.httpclient}</version>
             </dependency>
             <dependency>

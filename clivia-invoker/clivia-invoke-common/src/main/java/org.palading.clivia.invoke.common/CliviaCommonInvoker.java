@@ -49,8 +49,7 @@ public class CliviaCommonInvoker implements CliviaInvokerWraper {
             if (Objects.isNull(cliviaInvoker)) {
                 throw new Exception("CliviaCommonInvoker[invoke] rpcType is not exists,rpcType[" + rpcType + "]");
             }
-            Mono<Void> res = cliviaInvoker.invoke(serverWebExchange);
-            return res;
+            return cliviaInvoker.invoke(serverWebExchange);
         } catch (Exception e) {
             logger
                 .error("CliviaCommonInvoker[invoke] current invoker[" + cliviaInvoker.getClass().getSimpleName() + "] error", e);

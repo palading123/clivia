@@ -7,6 +7,7 @@ package org.palading.clivia.httpClient;
  */
 public class ContentType {
 
-    public static final String APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded;charset=UTF-8";
-    public static final String APPLICATION_JSON = "application/json;charset=UTF-8";
+    public static final String APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded";
+    public static final String APPLICATION_JSON = "application/json";
+    public static final String MULTIPART_FORM_DATA = "multipart/form-data";
 }

@@ -1,7 +1,7 @@
 package org.palading.clivia.httpClient;
 
-
 import org.palading.clivia.httpClient.request.CliviaHttpRequest;
+import org.palading.clivia.httpClient.response.CliviaHttpResponse;
 
 /**
  * @author palading_cr
@@ -10,7 +10,9 @@ import org.palading.clivia.httpClient.request.CliviaHttpRequest;
  */
 public interface HttpInterceptor {
 
-    public void interceptor(CliviaHttpRequest cliviaHttpRequest) throws Exception;
+    public boolean interceptor(CliviaHttpRequest cliviaHttpRequest) throws Exception;
 
     public int order();
+
+    public void afterInterceptor(CliviaHttpRequest cliviaHttpRequest, CliviaHttpResponse cliviaHttpResponse) throws Exception;
 }

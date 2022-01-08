@@ -1,4 +1,4 @@
-package org.palading.clivia.httpClient.restTemplate;
+package org.palading.clivia.httpClient;
 
 /**
  * http restTemplate

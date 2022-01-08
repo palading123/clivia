@@ -1,4 +1,4 @@
-package org.palading.clivia.httpClient.method;
+package org.palading.clivia.httpClient;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,18 +7,18 @@ import java.lang.annotation.Target;
 
 /**
  * @author palading_cr
- * @title Method
+ * @title SupportContentType
  * @project clivia-gateway
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface HttpMethod {
+@Target(ElementType.TYPE)
+public @interface SupportContentType {
 
     /**
-     * http method name
-     * 
+     * supported contentType
+     *
      * @author palading_cr
      *
      */
-    public String method() default "GET";
+    public String[] contentTypes();
 }

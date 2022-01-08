@@ -3,6 +3,8 @@ package org.palading.clivia.httpClient;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author palading_cr
  * @title HttpHeader
@@ -10,17 +12,14 @@ import java.util.TreeMap;
  */
 public class HttpHeader {
 
-    private HttpHeader httpHeader;
     private Map<String, String> header;
 
     /**
      * @author palading_cr
      *
      */
-    public HttpHeader buildBasicHeader() {
-        httpHeader = new HttpHeader();
+    public HttpHeader() {
         header = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        return this;
     }
 
     public String getContentType() {
@@ -39,6 +38,23 @@ public class HttpHeader {
     public HttpHeader setHeaders(Map<String, String> header) {
         this.header = header;
         return this;
+    }
+
+    public String getCharset() {
+        String charset = header.get("Accept-Charset");
+        if (StringUtils.isEmpty(charset)) {
+            String contentType = header.get("Content-Type");
+            String[] splits = contentType.split(";");
+            if (null == splits || splits.length < 1) {
+                return "UTF-8";
+            }
+            for (String content : splits) {
+                if (content.startsWith("charset=")) {
+                    charset = content.substring("charset=".length());
+                }
+            }
+        }
+        return StringUtils.isEmpty(charset) ? "UTF-8" : charset;
     }
 
 }
