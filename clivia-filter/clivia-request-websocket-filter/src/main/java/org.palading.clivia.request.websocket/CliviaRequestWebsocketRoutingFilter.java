@@ -45,7 +45,7 @@ public class CliviaRequestWebsocketRoutingFilter implements CliviaFilter {
     private static final Log logger = LogFactory.getLog(CliviaRequestWebsocketRoutingFilter.class);
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain) throws Exception {
+    public Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain) {
         ServerHttpRequest serverHttpRequest = exchange.getRequest();
         String methodType = serverHttpRequest.getMethodValue();
         if (!HttpMethod.GET.name().equals(methodType)) {

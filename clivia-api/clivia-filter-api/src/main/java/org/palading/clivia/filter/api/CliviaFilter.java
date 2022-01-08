@@ -44,7 +44,7 @@ public interface CliviaFilter {
     static final int IP_LEN = 15;
     static final String WEB_SOCKET = "websocket";
 
-    Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain) throws Exception;
+    Mono<Void> filter(ServerWebExchange exchange, CliviaFilterChain cliviaFilterChain);
 
     boolean shouldFilter(ServerWebExchange exchange);
 

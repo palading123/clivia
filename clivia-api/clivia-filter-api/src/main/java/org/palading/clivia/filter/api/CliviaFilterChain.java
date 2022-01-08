@@ -43,7 +43,6 @@ public class CliviaFilterChain {
             .defer(() -> {
                 if (this.index < cliviaFilterList.size()) {
                     CliviaFilter cliviaFilter = cliviaFilterList.get(this.index++);
-                    try {
                         if (!cliviaFilter.shouldFilter(exchange)) {
                             return filter(exchange, cliviaFilterChain);
                         }
@@ -52,14 +51,10 @@ public class CliviaFilterChain {
                                 + "]");
                         }
                         return cliviaFilter.filter(exchange, this);
-                    } catch (Exception e) {
-                        logger.error("CliviaFilterChain[filter] current filter[" + cliviaFilter.getClass().getSimpleName()
-                            + "] error", e);
-                    }
+
+                }else{
+                    return Mono.empty();
                 }
-                exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
-                return exchange.getResponse().writeWith(
-                    Mono.just(exchange.getResponse().bufferFactory().wrap(defaultErrorMessage.getBytes())));
             });
     }
 }

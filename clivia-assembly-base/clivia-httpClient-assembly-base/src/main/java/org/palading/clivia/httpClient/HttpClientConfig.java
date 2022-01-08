@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @author palading_cr
- * @title HttpConfig
+ * @title HttpClientConfig
  * @project clivia-gateway
  */
 public class HttpClientConfig implements Serializable {

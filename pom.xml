@@ -72,7 +72,7 @@
         <version.reflections>0.9.10</version.reflections>
         <version.guava>23.0</version.guava>
         <version.commons-text>1.6</version.commons-text>
-        <version.jackson-databind>2.9.4</version.jackson-databind>
+        <version.jackson-databind>2.9.5</version.jackson-databind>
         <version.commons-lang3>3.10</version.commons-lang3>
         <version.commons-io>2.8.0</version.commons-io>
         <version.disruptor>3.3.4</version.disruptor>
