@@ -40,6 +40,8 @@ public interface CliviaExtendClassLoaderFactory {
      */
     public <T> List<T> getExtendClassInstanceList(Class<T> type, String spiKey);
 
+    public <T> void getExtendClassInstanceList(Class<T> type,String ... spiKeys);
+
     /**
      * get default classLoader
      *

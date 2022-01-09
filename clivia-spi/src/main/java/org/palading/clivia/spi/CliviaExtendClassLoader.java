@@ -39,6 +39,13 @@ public class CliviaExtendClassLoader implements CliviaExtendClassLoaderFactory {
     }
 
     @Override
+    public <T> void getExtendClassInstanceList(Class<T> type, String... spiKeys) {
+        for(String spiKey : spiKeys){
+            getExtendClassInstanceList(type,spiKey);
+        }
+    }
+
+    @Override
     public <T> List<T> getExtendClassInstanceList(Class<T> type, String spiKey) {
         try {
             if (null == type) {

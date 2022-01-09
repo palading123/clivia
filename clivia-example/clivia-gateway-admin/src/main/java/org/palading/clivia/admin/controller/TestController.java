@@ -15,11 +15,7 @@ package org.palading.clivia.admin.controller;
 import org.palading.clivia.support.common.response.CliviaResponse;
 import org.palading.clivia.support.common.util.DesUtil;
 import org.palading.clivia.support.common.util.JsonUtil;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
@@ -93,8 +89,18 @@ public class TestController {
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public CliviaResponse buildCliviaResponse(@RequestBody Person person) {
         CliviaResponse cliviaResponse = CliviaResponse.success(person);
-        System.out.println(JsonUtil.toJson(cliviaResponse));
         return cliviaResponse;
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public String get(@RequestParam(value = "test") String test) {
+
+        return test;
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    public CliviaResponse post(@RequestBody Person person) {
+        return CliviaResponse.success(person);
     }
 
     static class Person implements Serializable {
