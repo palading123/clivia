@@ -97,41 +97,33 @@
 --------------------------------------------------------------------------------
 # Getting started
 
-* 1、clone project （gitee或者github）
+## 1、clone project
 ~~~
  git clone https://gitee.com/palading_cr/clivia.git
 ~~~
 ~~~
  git clone https://github.com/palading123/clivia.git
 ~~~
-
-* 2、Building
+## 2、install
 
 ~~~
    mvn clean install
 ~~~
-
-* 3、准备网关元数据(以文件配置方式为例)
-  #####  /script/fileConfig/目录下的三个json文件copy到本地磁盘下，特别需要注意的地方有两点：
-  ###### 1、json配置文件需要放到和clivia-gateway-admin同一台机器下，集群环境也是如此，也需要确保clivia-gateway-admin有权限读取配置文件
-  ###### 2、如果json配置文件目录为D://opt//clivia//gateway//,clivia-gateway-admin配置文件(application.properties)中的属性clivia.admin.config.absoluteFilePath=D://opt//clivia//gateway//
-  ###### 3、具体属性含义请参考![文件配置](./script/fileConfig/fileConfig.md)
-
-* 4、确保clivia-gateway-client可连通clivia-gateway-admin
-  ###### clivia-gateway-client配置文件中的clivia.server.config.cliviaAdminUrl属性为clivia-gateway-admin的地址
+## 3、check
+- json配置文件需要放到和clivia-gateway-admin同一台机器下，集群环境也是如此，也需要确保clivia-gateway-admin有权限读取配置文件
+- 如果json配置文件目录为D://opt//clivia//gateway//,clivia-gateway-admin配置文件(application.properties)中的属性clivia.admin.config.absoluteFilePath=D://opt//clivia//gateway//
+- clivia-gateway-client配置文件中的clivia.server.config.cliviaAdminUrl属性为clivia-gateway-admin的地址
 ~~~
   clivia.server.config.cliviaAdminUrl=http://localhost:1023
 ~~~
-
-* 5、run(先后启动clivia-example下的admin和client子工程,默认端口分别为1023和8099)
-  ###### 需要先启动clivia-gateway-admin
+## 4、run
+- 先后启动clivia-example下的admin和client子工程,默认端口分别为1023和8099
 ~~~
      java -jar clivia-gateway-admin-0.0.1.jar
      java -jar clivia-gateway-client-0.0.1.jar
 ~~~
-  ###### client启动成功时会显示clivia的logo：
- 
-   ~~~
+- client启动成功时会显示clivia的logo：
+~~~
    _____ _      _______      _______
 / ____| |    |_   _\ \    / /_   _|   /\
 | |    | |      | |  \ \  / /  | |    /  \
@@ -142,16 +134,14 @@
 
 ~~~
 
-* test
-###### 我在clivia-gateway-admin中内置了一个测试的TestController,可以测试get和post请求，curl命令如下:
-###### 1、get
+## 5、test
+- 我在clivia-gateway-admin中内置了一个测试的TestController,可以测试get和post请求，curl命令如下:
 ~~~
 curl --location --request GET 'localhost:8099/clivia-server/api/get?test=reganmian' \
 --header 'group: 1' \
 --header 'version: V0.0.1' \
 --header 'appKey: appKey1'
 ~~~
-###### 2、post
  ~~~
  curl --location --request POST 'localhost:8099/clivia-server/api/post' \
 --header 'group: 1' \
