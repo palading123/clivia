@@ -118,7 +118,7 @@ public class CliviaFileApiConfigServiceImpl implements CliviaApiConfigService {
                     if (cliviaApiCache.containsKey(paramEntry.getKey())) {
                         Api apiCache = cliviaApiCache.get(paramEntry.getKey());
                         if (!apiCache.getDesCode().equals(paramEntry.getValue())) {
-                            apiResult.put(paramEntry.getKey(), cliviaApiCache.get(paramEntry.getValue()));
+                            apiResult.put(paramEntry.getKey(), cliviaApiCache.get(paramEntry.getKey()));
                         }
                     }
                 }
