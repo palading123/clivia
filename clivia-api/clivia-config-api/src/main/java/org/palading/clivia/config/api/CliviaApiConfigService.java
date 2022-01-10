@@ -33,8 +33,8 @@ public interface CliviaApiConfigService {
 
     default void updateCache(Map<String, Api> cliviaApiCacheLastest, Map<String, Api> cliviaApiCacheCurrent) {
         for (Map.Entry<String, Api> entry : cliviaApiCacheLastest.entrySet()) {
-            if (entry.getKey().equals(cliviaApiCacheCurrent.get(entry.getKey()))
-                && entry.getValue().getDesCode().equals(cliviaApiCacheCurrent.get(entry.getKey()).getDesCode())) {
+            if (cliviaApiCacheCurrent.containsKey(entry.getKey())
+                    && entry.getValue().getDesCode().equals(cliviaApiCacheCurrent.get(entry.getKey()).getDesCode())) {
                 continue;
             }
             if ((cliviaApiCacheCurrent.containsKey(entry.getKey()) && !entry.getValue().getDesCode()

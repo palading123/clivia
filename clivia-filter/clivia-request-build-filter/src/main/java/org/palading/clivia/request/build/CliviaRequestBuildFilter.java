@@ -68,7 +68,12 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
             return writeResponse(exchange, JsonUtil.toJson(CliviaResponse.error_method_type()));
         }
         CliviaRequestContext cliviaRequestContext = buildContext(new CliviaRequestContext(), exchange, cliviaServerProperties);
-        buildLocalAttribute(exchange, cliviaRequestContext);
+        ApiDetail apiDetail = getApiDetail(cliviaRequestContext);
+        if(null == apiDetail){
+            return writeResponse(exchange, default_service_not_found_msg);
+        }
+        exchange.getAttributes().put(CliviaConstants.request_context,
+                cliviaRequestContext.appInfo(apiDetail).build());
         logger.info("CliviaRequestBuildFilter[filter] requetId[" + cliviaRequestContext.getRequestId() + "]");
         return Optional.of(cliviaRequestContext).filter(u -> null == u.getAppInfo() || !u.getAppInfo().getEnabled())
             .map(a -> writeResponse(exchange, default_service_not_found_msg))
@@ -92,9 +97,14 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
         return null;
     }
 
-    private void buildLocalAttribute(ServerWebExchange serverWebExchange, CliviaRequestContext cliviaRequestContext) {
-        serverWebExchange.getAttributes().put(CliviaConstants.request_context,
-            cliviaRequestContext.appInfo(getApiDetail(cliviaRequestContext)).build());
+    private boolean buildLocalAttribute(ServerWebExchange serverWebExchange, CliviaRequestContext cliviaRequestContext) {
+        ApiDetail apiDetail = getApiDetail(cliviaRequestContext);
+        if(null != apiDetail){
+            serverWebExchange.getAttributes().put(CliviaConstants.request_context,
+                    cliviaRequestContext.appInfo(apiDetail).build());
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -53,7 +53,6 @@ public class CliviaExtendClassLoader implements CliviaExtendClassLoaderFactory {
             }
             if (StringUtils.isEmpty(spiKey)) {
                 throw new Exception("CliviaExtendClassLoader[getExtendClassInstanceList] spiKey is null");
-
             }
             Map<String, List<?>> extendInstanseMap = extendClassInstances.get(type.getName());
             if (null != extendInstanseMap && null != extendInstanseMap.get(spiKey)) {

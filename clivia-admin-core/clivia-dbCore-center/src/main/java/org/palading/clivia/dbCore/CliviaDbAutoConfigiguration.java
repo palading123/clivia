@@ -33,8 +33,8 @@ import javax.sql.DataSource;
  * @project clivia
  */
 @Conditional(CliviaConfigCondition.class)
-@EnableJpaRepositories(basePackages = {"com.clivia.admin.dbConfig.repository"})
-@EntityScan("com.clivia.admin.dbConfig.domain")
+@EnableJpaRepositories(basePackages = {"org.palading.clivia.dbCore.repository"})
+@EntityScan("org.palading.clivia.dbCore.domain")
 @Configuration
 public class CliviaDbAutoConfigiguration {
 
