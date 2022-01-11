@@ -283,7 +283,7 @@ public class CliviaHttpClientProperties {
         /**
          * Installs the netty InsecureTrustManagerFactory. This is insecure and not suitable for production.
          */
-        private boolean useInsecureTrustManager = false;
+        private boolean useInsecureTrustManager = true;
 
         /** Trusted certificates for verifying the remote endpoint's certificate. */
         private List<String> trustedX509Certificates = new ArrayList<>();
