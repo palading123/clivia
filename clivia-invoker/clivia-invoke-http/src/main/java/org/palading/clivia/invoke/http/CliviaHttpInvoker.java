@@ -74,11 +74,9 @@ public class CliviaHttpInvoker implements CliviaInvoker {
 
     private String buildUpstreamUrl(CliviaRequestContext cliviaRequestContext, String upstreamUrl, String query) {
         String rewritePath = cliviaRequestContext.getRewritePath();
-        String apiServiceType = cliviaRequestContext.getAppInfo().getApiServiceType();
         if (StringUtils.isNotEmpty(rewritePath)) {
             upstreamUrl = upstreamUrl.concat(rewritePath);
-        }
-        if (StringUtils.isNotEmpty(apiServiceType) && CliviaConstants.api_service_type_system.equals(apiServiceType)) {
+        }else{
             upstreamUrl = upstreamUrl.concat(cliviaRequestContext.getPath());
         }
         if (StringUtils.isNotEmpty(query)) {

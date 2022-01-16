@@ -157,9 +157,6 @@ public class CliviaRequestContext implements Serializable {
         return this;
     }
 
-    public CliviaRequestContext build() {
-        return this;
-    }
 
     public String getCacheKey() {
         return group.concat("@").concat("@").concat(version).concat(path);

@@ -76,8 +76,6 @@ public class CliviaRequestBlackListFilter implements CliviaFilter {
      *
      */
     private boolean clientRequestLimit(String group, String clientIp, String requestId) {
-        logger.info("CliviaBlackListFilter[clientRequestLimit],current requestId[" + requestId + "],group[" + group
-            + "],current clientIp[" + clientIp + "]");
         return Optional
             .ofNullable(DefaultCliviaCacheManager.getCliviaServerCache().getBlackListCacheByGroup(group))
             .map(

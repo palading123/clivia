@@ -73,8 +73,7 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
             return writeResponse(exchange, default_service_not_found_msg);
         }
         exchange.getAttributes().put(CliviaConstants.request_context,
-                cliviaRequestContext.appInfo(apiDetail).build());
-        logger.info("CliviaRequestBuildFilter[filter] requetId[" + cliviaRequestContext.getRequestId() + "]");
+                cliviaRequestContext.appInfo(apiDetail));
         return Optional.of(cliviaRequestContext).filter(u -> null == u.getAppInfo() || !u.getAppInfo().getEnabled())
             .map(a -> writeResponse(exchange, default_service_not_found_msg))
             .orElseGet(() -> cliviaFilterChain.filter(exchange, cliviaFilterChain));
@@ -101,7 +100,7 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
         ApiDetail apiDetail = getApiDetail(cliviaRequestContext);
         if(null != apiDetail){
             serverWebExchange.getAttributes().put(CliviaConstants.request_context,
-                    cliviaRequestContext.appInfo(apiDetail).build());
+                    cliviaRequestContext.appInfo(apiDetail));
             return true;
         }
         return false;
