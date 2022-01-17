@@ -18,6 +18,7 @@ import org.palading.clivia.support.common.util.JsonUtil;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * @author palading_cr
@@ -96,6 +97,11 @@ public class TestController {
     public String get(@RequestParam(value = "test") String test) {
 
         return test;
+    }
+
+    @RequestMapping(value = "/postForm", method = RequestMethod.POST)
+    public Map get(@RequestParam Map<String,Object> param) {
+        return param;
     }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)

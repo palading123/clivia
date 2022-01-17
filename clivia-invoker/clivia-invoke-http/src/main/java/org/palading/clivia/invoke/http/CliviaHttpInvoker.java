@@ -41,6 +41,8 @@ import java.util.Optional;
 public class CliviaHttpInvoker implements CliviaInvoker {
 
     private static final String default_http_invoke_error = JsonUtil.toJson(CliviaResponse.invoke_http_fail());
+    private static final String invoke_http_router_not_exists = JsonUtil.toJson(CliviaResponse.invoke_http_router_not_exists());
+    private static final String invoke_http_upstream_not_exists = JsonUtil.toJson(CliviaResponse.invoke_http_upstream_not_exists());
 
     private WebClient webClient;
 
@@ -65,7 +67,14 @@ public class CliviaHttpInvoker implements CliviaInvoker {
         CliviaRequestContext cliviaRequestContext =
             (CliviaRequestContext)exchange.getAttributes().get(CliviaConstants.request_context);
         ApiDefaultRoute apiDefaultRoute = cliviaRequestContext.getAppInfo().getApiDefaultRoute();
-        String upstreamUrl = getApiLoadbalanceRouter(apiDefaultRoute).getUpstreamUrl();
+        ApiDefaultLoadbalanceRouter apiDefaultLoadbalanceRouter = getApiLoadbalanceRouter(apiDefaultRoute);
+        if(null == apiDefaultLoadbalanceRouter){
+            return writeResponse(exchange,invoke_http_router_not_exists);
+        }
+        String upstreamUrl = apiDefaultLoadbalanceRouter.getUpstreamUrl();
+        if(StringUtils.isEmpty(upstreamUrl)){
+            return writeResponse(exchange,invoke_http_upstream_not_exists);
+        }
         String query = exchange.getRequest().getURI().getQuery();
         return httpInvoke(exchange, webClient, default_http_invoke_error,
             buildUpstreamUrl(cliviaRequestContext, upstreamUrl, query), Optional.ofNullable(apiDefaultRoute.getRetryTimes())

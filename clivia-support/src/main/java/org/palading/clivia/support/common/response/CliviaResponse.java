@@ -109,6 +109,16 @@ public class CliviaResponse implements Serializable {
             CliviaResponseEnum.service_http_invoke_error.getMsg(), null);
     }
 
+    public static CliviaResponse invoke_http_router_not_exists() {
+        return new CliviaResponse(CliviaResponseEnum.service_http_router_error.getCode(),
+                CliviaResponseEnum.service_http_router_error.getMsg(), null);
+    }
+
+    public static CliviaResponse invoke_http_upstream_not_exists() {
+        return new CliviaResponse(CliviaResponseEnum.service_http_upstream_error.getCode(),
+                CliviaResponseEnum.service_http_upstream_error.getMsg(), null);
+    }
+
     public static CliviaResponse invoke_springcloud_fail() {
         return new CliviaResponse(CliviaResponseEnum.service_springcloud_invoke_error.getCode(),
             CliviaResponseEnum.service_springcloud_invoke_error.getMsg(), null);
