@@ -23,7 +23,7 @@
     <artifactId>clivia</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1</version>
-    <description>org.palading.clivia.config.api gateway with high performance, high elasticity, responsiveness and high expansion</description>
+    <description>Clivia is a scalable, high-performance, elastic and responsive API gateway based on spring weblux</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
