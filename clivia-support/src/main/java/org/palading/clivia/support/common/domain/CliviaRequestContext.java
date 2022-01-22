@@ -47,6 +47,11 @@ public class CliviaRequestContext implements Serializable {
     private String rpcType;
     private String nonce;
 
+    public CliviaRequestContext(String group,String version,String path){
+        this.path = path;
+        this.group = group;
+        this.version = version;
+    }
     public String getNonce() {
         return nonce;
     }

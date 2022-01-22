@@ -67,16 +67,17 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
         if (!HttpMethod.POST.name().equals(methodType) && !HttpMethod.GET.name().equals(methodType)) {
             return writeResponse(exchange, JsonUtil.toJson(CliviaResponse.error_method_type()));
         }
-        CliviaRequestContext cliviaRequestContext = buildContext(new CliviaRequestContext(), exchange, cliviaServerProperties);
-        ApiDetail apiDetail = getApiDetail(cliviaRequestContext);
-        if(null == apiDetail){
+        String path = getPath(exchange);
+        String version = getVersion(exchange);
+        String group = getGroup(exchange);
+        ApiDetail apiDetail = getApiDetail(path,version,group);
+        if(null == apiDetail || !apiDetail.getEnabled()){
             return writeResponse(exchange, default_service_not_found_msg);
         }
         exchange.getAttributes().put(CliviaConstants.request_context,
-                cliviaRequestContext.appInfo(apiDetail));
-        return Optional.of(cliviaRequestContext).filter(u -> null == u.getAppInfo() || !u.getAppInfo().getEnabled())
-            .map(a -> writeResponse(exchange, default_service_not_found_msg))
-            .orElseGet(() -> cliviaFilterChain.filter(exchange, cliviaFilterChain));
+                buildContext(new CliviaRequestContext(group,version,path),
+                        exchange, cliviaServerProperties).appInfo(apiDetail));
+        return cliviaFilterChain.filter(exchange, cliviaFilterChain);
     }
 
     /**
@@ -113,8 +114,12 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
      *
      */
     private ApiDetail getApiDetail(CliviaRequestContext context) {
-        return DefaultCliviaCacheManager.getCliviaServerCache().getApiDetailByCacheKey(context.getPath(), context.getVersion(),
+        return getApiDetail(context.getPath(), context.getVersion(),
             context.getGroup());
+    }
+
+    private ApiDetail getApiDetail(String path,String version,String group){
+        return DefaultCliviaCacheManager.getCliviaServerCache().getApiDetailByCacheKey(path,version,group);
     }
 
     @Override
@@ -131,5 +136,17 @@ public class CliviaRequestBuildFilter implements CliviaFilter {
     @Override
     public boolean shouldFilter(ServerWebExchange exchange) {
         return true;
+    }
+
+    private String getPath(final ServerWebExchange exchange) {
+        return exchange.getRequest().getURI().getPath();
+    }
+
+    private String getVersion(final ServerWebExchange exchange) {
+        return Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("version")).orElse("v1.0");
+    }
+
+    private String getGroup(final ServerWebExchange exchange) {
+        return Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("group")).orElse("default");
     }
 }

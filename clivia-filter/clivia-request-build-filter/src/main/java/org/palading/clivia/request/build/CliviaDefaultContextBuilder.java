@@ -31,8 +31,8 @@ public class CliviaDefaultContextBuilder implements ContextBuilder<CliviaRequest
     public CliviaRequestContext contextBuild(ServerWebExchange serverWebExchange, CliviaRequestContext cliviaRequestContext,
         CliviaServerProperties cliviaServerProperties) {
         return cliviaRequestContext.requestTime(LocalDateTime.now()).nonce(getNonce(serverWebExchange))
-            .path(buildRealPath(getPath(serverWebExchange), cliviaServerProperties)).group(getGroup(serverWebExchange))
-            .version(getVersion(serverWebExchange)).sign(getSign(serverWebExchange)).requestId(RequestIdGenerator.generate())
+            .path(buildRealPath(cliviaRequestContext.getPath(), cliviaServerProperties))
+            .sign(getSign(serverWebExchange)).requestId(RequestIdGenerator.generate())
             .client(getRemoteAddr(serverWebExchange)).appKey(getAppKey(serverWebExchange));
 
     }

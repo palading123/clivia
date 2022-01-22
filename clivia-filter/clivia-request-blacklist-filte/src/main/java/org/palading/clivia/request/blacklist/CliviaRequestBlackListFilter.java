@@ -19,6 +19,7 @@ import org.palading.clivia.filter.api.CliviaFilterChain;
 import org.palading.clivia.support.common.constant.CliviaConstants;
 import org.palading.clivia.support.common.constant.CliviaFilterOrder;
 import org.palading.clivia.support.common.domain.CliviaRequestContext;
+import org.palading.clivia.support.common.domain.common.ApiBlacklist;
 import org.palading.clivia.support.common.response.CliviaResponse;
 import org.palading.clivia.support.common.util.JsonUtil;
 import org.slf4j.Logger;
@@ -77,7 +78,7 @@ public class CliviaRequestBlackListFilter implements CliviaFilter {
      */
     private boolean clientRequestLimit(String group, String clientIp, String requestId) {
         return Optional
-            .ofNullable(DefaultCliviaCacheManager.getCliviaServerCache().getBlackListCacheByGroup(group))
+            .ofNullable(getBlackListCacheByGroup(group))
             .map(
                 b -> (b.getBlackList().contains(clientIp.substring(clientIp.lastIndexOf(".")).concat("*")))
                     || b.getBlackList().contains(clientIp)).orElse(false);
@@ -87,4 +88,10 @@ public class CliviaRequestBlackListFilter implements CliviaFilter {
     public int getOrder() {
         return CliviaFilterOrder.filter_blacklist_order;
     }
+
+    private ApiBlacklist getBlackListCacheByGroup(String group){
+        return DefaultCliviaCacheManager.getCliviaServerCache().getBlackListCacheByGroup(group);
+    }
+
+
 }
