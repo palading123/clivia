@@ -1,0 +1,3 @@
+org.palading.clivia.httpClient.request.CliviaFormRequestEntity
+org.palading.clivia.httpClient.request.CliviaMultipartRequestEntity
+org.palading.clivia.httpClient.request.CliviaStringRequetEntity
